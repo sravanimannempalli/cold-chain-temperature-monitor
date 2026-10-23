@@ -1,0 +1,4 @@
+*.vvp
+*.log
+*.tmp
+__pycache__/

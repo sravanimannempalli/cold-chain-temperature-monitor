@@ -1,0 +1,161 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO cold_chain_temp_monitor
+  CLASS BLOCK ;
+  FOREIGN cold_chain_temp_monitor ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 100.000 BY 100.000 ;
+  PIN alarm
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 96.000 49.680 100.000 50.280 ;
+    END
+  END alarm
+  PIN clk
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 24.930 96.000 25.210 100.000 ;
+    END
+  END clk
+  PIN rst_n
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 74.610 96.000 74.890 100.000 ;
+    END
+  END rst_n
+  PIN temp_high
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 49.770 0.000 50.050 4.000 ;
+    END
+  END temp_high
+  PIN VPWR
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER met4 ;
+        RECT 78.855 10.640 80.455 87.280 ;
+    END
+  END VPWR
+  PIN VPWR
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER met4 ;
+        RECT 49.200 10.640 50.800 87.280 ;
+    END
+  END VPWR
+  PIN VPWR
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER met4 ;
+        RECT 19.545 10.640 21.145 87.280 ;
+    END
+  END VPWR
+  PIN VPWR
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER met5 ;
+        RECT 5.520 75.040 94.300 76.640 ;
+    END
+  END VPWR
+  PIN VPWR
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER met5 ;
+        RECT 5.520 48.960 94.300 50.560 ;
+    END
+  END VPWR
+  PIN VPWR
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER met5 ;
+        RECT 5.520 22.880 94.300 24.480 ;
+    END
+  END VPWR
+  PIN VGND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER met4 ;
+        RECT 64.025 10.640 65.625 87.280 ;
+    END
+  END VGND
+  PIN VGND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER met4 ;
+        RECT 34.375 10.640 35.975 87.280 ;
+    END
+  END VGND
+  PIN VGND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER met5 ;
+        RECT 5.520 62.000 94.300 63.600 ;
+    END
+  END VGND
+  PIN VGND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER met5 ;
+        RECT 5.520 35.920 94.300 37.520 ;
+    END
+  END VGND
+  OBS
+      LAYER nwell ;
+        RECT 5.330 85.625 94.490 87.230 ;
+        RECT 5.330 80.185 94.490 83.015 ;
+        RECT 5.330 74.745 94.490 77.575 ;
+        RECT 5.330 69.305 94.490 72.135 ;
+        RECT 5.330 63.865 94.490 66.695 ;
+        RECT 5.330 58.425 94.490 61.255 ;
+        RECT 5.330 52.985 94.490 55.815 ;
+        RECT 5.330 47.545 94.490 50.375 ;
+        RECT 5.330 42.105 94.490 44.935 ;
+        RECT 5.330 36.665 94.490 39.495 ;
+        RECT 5.330 31.225 94.490 34.055 ;
+        RECT 5.330 25.785 94.490 28.615 ;
+        RECT 5.330 20.345 94.490 23.175 ;
+        RECT 5.330 14.905 94.490 17.735 ;
+        RECT 5.330 10.690 94.490 12.295 ;
+      LAYER li1 ;
+        RECT 5.520 10.795 94.300 87.125 ;
+      LAYER met1 ;
+        RECT 5.520 10.640 94.300 87.280 ;
+      LAYER met2 ;
+        RECT 19.605 95.720 24.650 96.000 ;
+        RECT 25.490 95.720 74.330 96.000 ;
+        RECT 75.170 95.720 90.990 96.000 ;
+        RECT 19.605 4.280 90.990 95.720 ;
+        RECT 19.605 4.000 49.490 4.280 ;
+        RECT 50.330 4.000 90.990 4.280 ;
+      LAYER met3 ;
+        RECT 19.545 50.680 96.000 87.205 ;
+        RECT 19.545 49.280 95.600 50.680 ;
+        RECT 19.545 10.715 96.000 49.280 ;
+      LAYER met4 ;
+        RECT 36.375 10.640 48.800 87.280 ;
+        RECT 51.200 10.640 63.625 87.280 ;
+        RECT 66.025 10.640 78.455 87.280 ;
+  END
+END cold_chain_temp_monitor
+END LIBRARY
+

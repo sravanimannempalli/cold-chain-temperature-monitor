@@ -1,0 +1,6 @@
+<< properties >>
+string FIXED_BBOX 0 0 20000 20000
+string GDS_FILE /openLANE_flow/designs/cold_chain_temp_monitor/runs/23-10_10-27/results/magic/cold_chain_temp_monitor.gds
+string GDS_END 300372
+string GDS_START 141170
+<< end >>

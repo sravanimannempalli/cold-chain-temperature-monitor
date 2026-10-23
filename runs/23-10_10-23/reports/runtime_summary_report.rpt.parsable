@@ -1,0 +1,4 @@
+0-prep 0.353
+1-yosys 0.717
+2-opensta 1.187
+3-verilog2def_openroad 1.112

@@ -1,0 +1,22 @@
+
+20. Printing statistics.
+
+=== cold_chain_temp_monitor ===
+
+   Number of wires:                 18
+   Number of wire bits:             20
+   Number of public wires:           5
+   Number of public wire bits:       7
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 17
+     $_ANDNOT_                       4
+     $_AND_                          1
+     $_MUX_                          3
+     $_NAND_                         1
+     $_NOR_                          1
+     $_OR_                           1
+     $_XNOR_                         2
+     sky130_fd_sc_hd__dfrtp_2        4
+

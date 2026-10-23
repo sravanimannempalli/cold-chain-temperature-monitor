@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<report-database>
+    <categories/>
+    <cells>
+        <cell>
+            <name>cold_chain_temp_monitor</name>
+        </cell>
+    </cells>
+    <items/>
+</report-database>

@@ -1,0 +1,26 @@
+POST-ROUTE STA — FF CORNER
+==============================
+
+Timing path startpoints/endpoints:
+Startpoint: rst_n (input port clocked by clk)
+Endpoint: _21_ (recovery check against rising-edge clock clk)
+Startpoint: temp_high (input port clocked by clk)
+Endpoint: _21_ (rising edge-triggered flip-flop clocked by clk)
+Startpoint: rst_n (input port clocked by clk)
+Endpoint: _21_ (removal check against rising-edge clock clk)
+Startpoint: _20_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _23_ (rising edge-triggered flip-flop clocked by clk)
+
+Reported path slack values:
+           8.01   slack (MET)
+           7.48   slack (MET)
+           1.91   slack (MET)
+           0.31   slack (MET)
+
+STA summary values:
+worst slack 7.48
+worst slack 0.31
+tns 0.00
+wns 0.00
+
+NOTE: Preliminary report; inspect full log for warnings.

@@ -1,0 +1,24 @@
+
+28. Printing statistics.
+
+=== cold_chain_temp_monitor ===
+
+   Number of wires:                 17
+   Number of wire bits:             17
+   Number of public wires:           7
+   Number of public wire bits:       7
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 14
+     sky130_fd_sc_hd__a31o_2         1
+     sky130_fd_sc_hd__a41o_2         1
+     sky130_fd_sc_hd__and2_2         1
+     sky130_fd_sc_hd__dfrtp_2        4
+     sky130_fd_sc_hd__inv_2          3
+     sky130_fd_sc_hd__o21a_2         1
+     sky130_fd_sc_hd__o221a_2        1
+     sky130_fd_sc_hd__o22a_2         2
+
+   Chip area for module '\cold_chain_temp_monitor': 183.926400
+

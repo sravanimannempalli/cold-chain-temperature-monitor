@@ -1,0 +1,5 @@
+
+27. Executing CHECK pass (checking for obvious problems).
+checking module cold_chain_temp_monitor..
+Warning: Wire cold_chain_temp_monitor.\alarm is used but has no driver.
+found and reported 1 problems.
