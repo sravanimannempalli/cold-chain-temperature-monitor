@@ -20,6 +20,7 @@ A Verilog RTL-based digital monitoring system designed to detect and track tempe
 - [Repository Structure](#repository-structure)
 - [Tools and Technologies](#tools-and-technologies)
 - [Implementation Workflow and Commands](#implementation-workflow-and-commands)
+- [Project Demo Video](#project-demo-video)
 - [Applications](#applications)
 - [Limitations and Future Enhancements](#limitations-and-future-enhancements)
 - [References](#references)
@@ -551,6 +552,11 @@ https://github.com/sravanimannempalli/cold-chain-temperature-monitor
 
 The project completed RTL verification, gate-level verification, and the OpenLane physical design flow. The repository contains the RTL source, testbenches, waveform data, netlists, physical layout files, parasitic data, and implementation reports.
 
+## Project Demo Video
+
+Watch the complete project demonstration, from Verilog RTL simulation to the final GDS layout.
+
+[▶ Watch the Project Demo on Google Drive](https://drive.google.com/file/d/1_KqHNOxbfTFj8Vq-QfOSUuIpifURai-I/view?usp=drive_link)
 ## Applications
 
 The digital monitoring concept is relevant to:
