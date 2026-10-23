@@ -19,6 +19,7 @@ A Verilog RTL-based digital monitoring system designed to detect and track tempe
 - [Waveforms and Design Visualizations](#waveforms-and-design-visualizations)
 - [Repository Structure](#repository-structure)
 - [Tools and Technologies](#tools-and-technologies)
+- [Implementation Workflow and Commands](#implementation-workflow-and-commands)
 - [Applications](#applications)
 - [Limitations and Future Enhancements](#limitations-and-future-enhancements)
 - [References](#references)
@@ -292,6 +293,7 @@ The wire-length unit and the exact interpretation of the via count should be tak
 Post-route STA summary reports for TT, SS, and FF corners are included under `reports/post_route_sta/`.
 
 ## Waveforms and Design Visualizations
+All the screenshots of waveforms, terminal logs, designs, evidences are in the screenshots folder
 
 Waveform screenshots and a schematic image can be added here after exporting them from the simulation and synthesis tools.
 
@@ -299,25 +301,17 @@ Waveform screenshots and a schematic image can be added here after exporting the
 
 Shows the clock, reset, temperature-status input, and relevant output signals during RTL simulation.
 
-`<!-- ![RTL Simulation Waveform](screenshots/gtkwave) -->`
-
 ### Gate-level simulation waveform
 
 Shows the corresponding signals during gate-level simulation.
-
-`<!-- ![Gate-Level Simulation Waveform](screenshots/glswaveform) -->`
 
 ### Synthesized netlist schematic
 
 A schematic generated from the synthesized netlist can illustrate the mapped sequential and combinational logic.
 
-`<!-- ![Synthesized Netlist Schematic](screenshots/cold_chain_monitor_netlist) -->`
-
 ### Physical layout
 
 The generated GDS layout can be viewed in a layout viewer such as KLayout.
-
-`![ASIC Physical Layout](screenshots/cold_chain_temp_monitor.gds.png)`
 
 ## Repository Structure
 
@@ -366,6 +360,196 @@ The exact contents of `runs/`, `screenshots/`, and the report directories may va
 - **STA tools and reports:** Timing analysis using timing constraints, cell libraries, and extracted parasitics.
 
 Tool versions and exact commands can be documented in a reproducibility section after confirming the versions used for the final run.
+
+## Implementation Workflow and Commands
+
+This section documents the major milestones followed during the development and physical implementation of the Cold-Chain Temperature Excursion Duration Monitor.
+
+
+### Milestone 1: Project Setup and Directory Structure
+
+Navigate to the project workspace and inspect the source files.
+
+```bash
+cd ~/Desktop/cold_chain_monitor
+
+ls
+ls src
+ls verification
+```
+
+The RTL source, simulation testbenches, and waveform files were organized into separate directories.
+
+### Milestone 2: RTL Design
+
+The main Verilog module was created and maintained at:
+
+```text
+src/cold_chain_temp_monitor.v
+```
+
+Inspect the RTL:
+
+```bash
+cat src/cold_chain_temp_monitor.v
+```
+
+The design describes the sequential monitoring logic, clock/reset behavior, and outputs.
+
+### Milestone 3: RTL Simulation
+
+The RTL testbench was used to verify the design before synthesis.
+
+```text
+verification/tb_cold_chain_temp_monitor.v
+```
+
+The testbench generated VCD waveform data for signal inspection.
+
+```text
+verification/cold_chain_temp_monitor.vcd
+```
+
+If the waveform was generated in the current directory, move or copy it into `verification/` as needed.
+
+**Recorded result:** 20/20 RTL simulation tests passed.
+
+### Milestone 4: Gate-Level Simulation (GLS)
+
+The synthesized gate-level design was checked using a separate testbench.
+
+```text
+verification/tb_cold_chain_temp_monitor_gls.v
+```
+
+Technology-mapped netlists may require additional SKY130 standard-cell simulation models and appropriate compile options.
+
+The gate-level waveform file is:
+
+```text
+verification/cold_chain_temp_monitor_gls.vcd
+```
+
+**Recorded result:** 20/20 gate-level simulation tests passed.
+
+### Milestone 5: OpenLane Configuration
+
+The physical design project was configured using OpenLane 1.x and the SKY130A PDK.
+
+Configuration files:
+
+```text
+config.tcl
+pin_order.cfg
+docs/config.tcl
+docs/pin_order.cfg
+```
+
+The OpenLane project directory was:
+
+```bash
+cd /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/cold_chain_temp_monitor
+```
+
+Inspect the configuration:
+
+```bash
+cat config.tcl
+cat pin_order.cfg
+```
+
+### Milestone 6: ASIC Physical Design Flow
+
+The design was processed through the OpenLane RTL-to-GDS flow, including synthesis, floorplanning, placement, clock-tree synthesis, routing, and physical verification.
+
+A typical OpenLane 1.x launch command is:
+
+```bash
+openlane config.tcl
+```
+
+The recorded run directory was:
+
+```text
+runs/23-10_10-27/
+```
+
+### Milestone 7: Inspecting Generated Results
+
+After the physical design flow, the generated files were inspected.
+
+```bash
+ls results
+ls results/synthesis
+ls results/routing
+ls results/klayout
+ls reports
+```
+
+Important generated artifacts included:
+
+```text
+results/synthesis/cold_chain_temp_monitor.synthesis_cts.v
+results/routing/cold_chain_temp_monitor.def
+results/routing/cold_chain_temp_monitor.spef
+results/klayout/cold_chain_temp_monitor.gds
+results/magic/cold_chain_temp_monitor.gds
+```
+
+The repository also contains organized copies of the final netlist, layout, and parasitic files under `results/netlist/` and `results/layout/`.
+
+### Milestone 8: Physical Verification and Reports
+
+The final implementation summary and physical verification results were reviewed.
+
+```text
+reports/openlane/final_summary_report.csv
+```
+
+The recorded flow reported zero TritonRoute violations, shorts, antenna violations, LVS errors, CVC errors, and KLayout violations.
+
+These results correspond to the recorded implementation run and should be verified against the committed summary report when reproducing the project.
+
+### Milestone 9: Post-Route Timing Analysis
+
+Post-route timing summary reports were prepared for the TT, SS, and FF corners.
+
+```text
+reports/post_route_sta/tt_summary.rpt
+reports/post_route_sta/ss_summary.rpt
+reports/post_route_sta/ff_summary.rpt
+```
+
+### Milestone 10: Viewing the Physical Layout
+
+The generated GDS was opened in KLayout for visual inspection.
+
+The relevant layout file was:
+
+```text
+results/klayout/cold_chain_temp_monitor.gds
+```
+
+The layout screenshot was saved in the project's screenshots collection for documentation.
+
+### Milestone 11: Organizing the GitHub Repository
+
+The project files were organized into source, verification, results, reports, documentation, and screenshots directories.
+
+```bash
+git status
+git add .
+git commit -m "Add cold-chain temperature monitor RTL and physical design"
+git push -u origin main
+```
+
+The repository was published on GitHub:
+
+https://github.com/sravanimannempalli/cold-chain-temperature-monitor
+
+### Final Outcome
+
+The project completed RTL verification, gate-level verification, and the OpenLane physical design flow. The repository contains the RTL source, testbenches, waveform data, netlists, physical layout files, parasitic data, and implementation reports.
 
 ## Applications
 
